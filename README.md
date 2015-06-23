@@ -1,4 +1,4 @@
-osCommerce-234-bootstrap
+osCommerce-234-bootstrap-crazy
 =========================
 
 osCommerce 2.3.4 with Bootstrap, what more needs to be said.  
