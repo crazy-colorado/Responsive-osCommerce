@@ -24,5 +24,6 @@ define('EMAIL_TEXT_BILLING_ADDRESS', 'Billing Address');
 define('EMAIL_TEXT_PAYMENT_METHOD', 'Payment Method');
 
 define('EMAIL_SEPARATOR', '------------------------------------------------------');
+define('EMAIL_WARNING', 'NOTE: This email address was submitted by a visitor to our online store. If you did not authorize the use of your email address, please send a message to:  ' . STORE_OWNER_EMAIL_ADDRESS . '.  Otherwise, we appreciate your choosing ' . STORE_NAME . ' and have a wonderful day.');
 define('TEXT_EMAIL_VIA', 'via');
 ?>
