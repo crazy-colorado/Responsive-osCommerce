@@ -202,12 +202,12 @@
     $reviews = tep_db_fetch_array($reviews_query);
 
     if ($reviews['count'] > 0) {
-      echo '<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="ratingValue" content="' . $reviews['avgrating'] . '" /><meta itemprop="ratingCount" content="' . $reviews['count'] . '" /></span>';
+      echo '<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="bestRating" content="5" /><meta itemprop="ratingValue" content="' . $reviews['avgrating'] . '" /><meta itemprop="ratingCount" content="' . $reviews['count'] . '" /></span>';
     }
 ?>
 
   <div class="buttonSet row">
-    <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_REVIEWS . (($reviews['count'] > 0) ? ' (' . $reviews['count'] . ')' : ''), 'fa fa-commenting', tep_href_link(FILENAME_PRODUCT_REVIEWS, tep_get_all_get_params())); ?></div>
+    <div class="col-xs-6"><?php echo ($reviews['count'] > 0 ? tep_draw_button(IMAGE_BUTTON_REVIEWS . ' (' . $reviews['count'] . ')', 'fa fa-commenting', tep_href_link(FILENAME_PRODUCT_REVIEWS, tep_get_all_get_params())) : tep_draw_button(IMAGE_BUTTON_WRITE_REVIEW, 'fa fa-heart', tep_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, tep_get_all_get_params()), 'primary', NULL, 'btn-primary')); ?></div>
     <div class="col-xs-6 text-right"><?php echo tep_draw_hidden_field('products_id', $product_info['products_id']) . tep_draw_button(IMAGE_BUTTON_IN_CART, 'fa fa-shopping-cart', null, 'primary', null, 'btn-success'); ?></div>
   </div>
 
