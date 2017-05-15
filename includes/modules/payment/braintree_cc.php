@@ -164,7 +164,7 @@
       }
 
       if ( MODULE_PAYMENT_BRAINTREE_CC_TOKENS == 'True' ) {
-        $tokens_query = tep_db_query("select id, card_type, number_filtered, expiry_date from customers_braintree_tokens where customers_id = '" . (int)$customer_id . "' order by date_added");
+        $tokens_query = tep_db_query("select id, card_type, number_filtered, expiry_date from :table_customers_braintree_tokens where customers_id = '" . (int)$customer_id . "' order by date_added");
 
         if ( tep_db_num_rows($tokens_query) > 0 ) {
           $content .= '<table id="braintree_table" border="0" width="100%" cellspacing="0" cellpadding="2">';
@@ -243,7 +243,7 @@
 
       if ( MODULE_PAYMENT_BRAINTREE_CC_TOKENS == 'True' ) {
         if ( isset($_POST['braintree_card']) && is_numeric($_POST['braintree_card']) && ($_POST['braintree_card'] > 0) ) {
-          $token_query = tep_db_query("select braintree_token from customers_braintree_tokens where id = '" . (int)$_POST['braintree_card'] . "' and customers_id = '" . (int)$customer_id . "'");
+          $token_query = tep_db_query("select braintree_token from :table_customers_braintree_tokens where id = '" . (int)$_POST['braintree_card'] . "' and customers_id = '" . (int)$customer_id . "'");
 
           if ( tep_db_num_rows($token_query) == 1 ) {
             $token = tep_db_fetch_array($token_query);
@@ -710,7 +710,7 @@ EOD;
       } catch ( Exception $e ) {
       }
 
-      tep_db_query("delete from customers_braintree_tokens where id = '" . (int)$token_id . "' and customers_id = '" . (int)$customer_id . "' and braintree_token = '" . tep_db_prepare_input(tep_db_input($token)) . "'");
+      tep_db_query("delete from :table_customers_braintree_tokens where id = '" . (int)$token_id . "' and customers_id = '" . (int)$customer_id . "' and braintree_token = '" . tep_db_prepare_input(tep_db_input($token)) . "'");
 
       return (tep_db_affected_rows() === 1);
     }
